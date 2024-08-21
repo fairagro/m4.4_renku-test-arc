@@ -17,12 +17,6 @@
                     "@renku_data_type": "renku.domain_model.dataset.Dataset",
                     "@renku_oid": "89a4adfa2840f3082dee9402f1efca84a03004aa556c9bf6105c350e0d31b861",
                     "@renku_reference": true
-                  },
-                  "speakers",
-                  {
-                    "@renku_data_type": "renku.domain_model.dataset.Dataset",
-                    "@renku_oid": "d458752293eca4dbed9ca4b796dba8bfa40cea42f6f856d894af9155748cf286",
-                    "@renku_reference": true
                   }
                 ]
               }

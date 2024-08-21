@@ -18,10 +18,10 @@
                     "@renku_oid": "89a4adfa2840f3082dee9402f1efca84a03004aa556c9bf6105c350e0d31b861",
                     "@renku_reference": true
                   },
-                  "/datasets/c1382a092c674e48b349214c15694228",
+                  "/datasets/f6cad3d0268c449a803c59f2d3bd1283",
                   {
                     "@renku_data_type": "renku.domain_model.dataset.Dataset",
-                    "@renku_oid": "d458752293eca4dbed9ca4b796dba8bfa40cea42f6f856d894af9155748cf286",
+                    "@renku_oid": "b862a9bdb0ba58bcfd9dc503082c81035d29dd1e1342b061058f0a74f2628544",
                     "@renku_reference": true
                   }
                 ]
