@@ -5,3 +5,6 @@
 
 # JupyterLab
 .ipynb_checkpoints
+
+# Python environments
+.venv
