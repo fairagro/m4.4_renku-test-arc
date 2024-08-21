@@ -1,0 +1,34 @@
+description: null
+keywords: []
+name: main
+steps:
+- calculation:
+    command: python workflows/calculation/calculation.py -p assays/population/dataset/population.csv
+      -s assays/speakers/dataset/speakers_revised.csv
+    description: null
+    inputs:
+    - script:
+        path: workflows/calculation/calculation.py
+    - population:
+        path: assays/population/dataset/population.csv
+        prefix: -p
+    - speakers:
+        path: assays/speakers/dataset/speakers_revised.csv
+        prefix: -s
+    keywords: []
+    outputs:
+    - output:
+        path: results.csv
+- plot:
+    command: python workflows/plot/plot.py -r results.csv
+    description: null
+    inputs:
+    - script:
+        path: workflows/plot/plot.py
+    - results:
+        path: results.csv
+        prefix: -r
+    keywords: []
+    outputs:
+    - output:
+        path: results.svg
