@@ -12,6 +12,12 @@
               {
                 "@renku_data_type": "builtins.tuple",
                 "@renku_data_value": [
+                  "/plans/346f92cc97fc49ec83008558a9119a04",
+                  {
+                    "@renku_data_type": "renku.domain_model.workflow.plan.Plan",
+                    "@renku_oid": "1e92be9f19965aab7e5628c58f7ef7413e952d29ca10e556cb6ef3d16da4c130",
+                    "@renku_reference": true
+                  },
                   "/plans/8b448f0777324f35b60a7f6651ea88c0",
                   {
                     "@renku_data_type": "renku.domain_model.workflow.plan.Plan",
