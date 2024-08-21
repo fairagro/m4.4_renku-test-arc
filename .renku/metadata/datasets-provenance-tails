@@ -12,6 +12,12 @@
               {
                 "@renku_data_type": "builtins.tuple",
                 "@renku_data_value": [
+                  "/datasets/0b1f55678dda4963bfa4fac836dc59a6",
+                  {
+                    "@renku_data_type": "renku.domain_model.dataset.Dataset",
+                    "@renku_oid": "8b408eda0a750ef682b96f9f80220e5726c7b00b756af0b0dc589019d2a9c317",
+                    "@renku_reference": true
+                  },
                   "/datasets/1bad8c53f14549a49f2474f17860d97a",
                   {
                     "@renku_data_type": "renku.domain_model.dataset.Dataset",
@@ -22,12 +28,6 @@
                   {
                     "@renku_data_type": "renku.domain_model.dataset.Dataset",
                     "@renku_oid": "279a9e3248d780589dc8cbfb67cb92acc88df2c9de0b2da9a20304d796c00dd1",
-                    "@renku_reference": true
-                  },
-                  "/datasets/dda3cc2546ed43a1b3357d7d1544a62f",
-                  {
-                    "@renku_data_type": "renku.domain_model.dataset.Dataset",
-                    "@renku_oid": "0f242419c222ef801a8771263411716c32d6c966702f5b6928af84d572061a28",
                     "@renku_reference": true
                   },
                   "/datasets/f6cad3d0268c449a803c59f2d3bd1283",
