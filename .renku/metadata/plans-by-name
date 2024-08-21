@@ -12,6 +12,12 @@
               {
                 "@renku_data_type": "builtins.tuple",
                 "@renku_data_value": [
+                  "calculation",
+                  {
+                    "@renku_data_type": "renku.domain_model.workflow.plan.Plan",
+                    "@renku_oid": "19df14a2b3b117cf9c90e528151478a4524bd20d7d74546e2c633de423b498fd",
+                    "@renku_reference": true
+                  },
                   "python-workflows_ca-a51b8",
                   {
                     "@renku_data_type": "renku.domain_model.workflow.plan.Plan",
