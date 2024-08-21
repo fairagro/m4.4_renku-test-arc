@@ -1,5 +1,42 @@
 {
   "@renku_data_type": "renku.infrastructure.database.RenkuOOBTree",
-  "@renku_data_value": null,
+  "@renku_data_value": {
+    "@renku_data_type": "builtins.tuple",
+    "@renku_data_value": [
+      {
+        "@renku_data_type": "builtins.tuple",
+        "@renku_data_value": [
+          {
+            "@renku_data_type": "builtins.tuple",
+            "@renku_data_value": [
+              {
+                "@renku_data_type": "builtins.tuple",
+                "@renku_data_value": [
+                  "assays/population/dataset/population.csv",
+                  {
+                    "@renku_data_type": "persistent.list.PersistentList",
+                    "@renku_oid": "be8298af61144e70b4b664f6714ca03d25b8b619fade4505ab0f37cd3440875f",
+                    "@renku_reference": true
+                  },
+                  "assays/speakers/dataset/speakers_revised.csv",
+                  {
+                    "@renku_data_type": "persistent.list.PersistentList",
+                    "@renku_oid": "3ea459b89f604835afe6a8da254d1ec6d69a68d8520342cbbff2cc06feb4312e",
+                    "@renku_reference": true
+                  },
+                  "workflows/calculation/calculation.py",
+                  {
+                    "@renku_data_type": "persistent.list.PersistentList",
+                    "@renku_oid": "438bbb08927e455fb487ba9463cdd7440c4932cbd12f49238a7d24c79eb048c9",
+                    "@renku_reference": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "@renku_oid": "activities-by-usage"
 }
