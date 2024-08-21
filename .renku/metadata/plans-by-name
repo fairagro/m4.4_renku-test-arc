@@ -21,7 +21,7 @@
                   "calculation",
                   {
                     "@renku_data_type": "renku.domain_model.workflow.plan.Plan",
-                    "@renku_oid": "19df14a2b3b117cf9c90e528151478a4524bd20d7d74546e2c633de423b498fd",
+                    "@renku_oid": "71221aff39489bb7896912536f4408c030eeabfbe1e4f3a3ae5bccfff2a993ac",
                     "@renku_reference": true
                   },
                   "plot",
