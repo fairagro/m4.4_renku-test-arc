@@ -18,6 +18,12 @@
                     "@renku_oid": "351e5c12776924839d2061c56d49fbc09cdef5f0cd953873bc897a4fa3152ae4",
                     "@renku_reference": true
                   },
+                  "/plans/0f52454e547543d2b5d50ae361cf4ac3",
+                  {
+                    "@renku_data_type": "renku.domain_model.workflow.plan.Plan",
+                    "@renku_oid": "617c7db48818141d929628512543d7fc45a0a83a980f6823990e52b7cb79ab1b",
+                    "@renku_reference": true
+                  },
                   "/plans/0fbbfbec93fa4601b64f8ea9bde8d2ef",
                   {
                     "@renku_data_type": "renku.domain_model.workflow.composite_plan.CompositePlan",

@@ -27,7 +27,7 @@
                   "plot",
                   {
                     "@renku_data_type": "renku.domain_model.workflow.plan.Plan",
-                    "@renku_oid": "a063ceaaa39c552bc3a820220b3387977c8cc9f19a7c51f86c5c0c091e205bf1",
+                    "@renku_oid": "617c7db48818141d929628512543d7fc45a0a83a980f6823990e52b7cb79ab1b",
                     "@renku_reference": true
                   },
                   "python-workflows_ca-a51b8",
