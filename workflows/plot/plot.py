@@ -10,11 +10,11 @@ parser = argparse.ArgumentParser(prog="python plot.py", description="Plots the p
 parser.add_argument("-r", "--results", required=True, help="Path to the results.csv File")
 args = parser.parse_args()
 
-df = pd.read_csv('results.csv')
+df = pd.read_csv(args.results)
 colors = matplotlib.colormaps['tab10'](range(len(df)))
 
 ax = df.plot.bar(x='language', y='percentage', legend=False, title='Language Popularity', color=colors) 
 ax.yaxis.set_label_text('Percentage (%)')
 ax.xaxis.set_label_text('')
 
-plt.savefig(args.results)
+plt.savefig('results.svg')
