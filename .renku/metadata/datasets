@@ -15,7 +15,7 @@
                   "population",
                   {
                     "@renku_data_type": "renku.domain_model.dataset.Dataset",
-                    "@renku_oid": "caae1d7adfc99f3bf1448ca84209665253da08d3d2c46e54078010ee64efee5c",
+                    "@renku_oid": "279a9e3248d780589dc8cbfb67cb92acc88df2c9de0b2da9a20304d796c00dd1",
                     "@renku_reference": true
                   },
                   "speakers",

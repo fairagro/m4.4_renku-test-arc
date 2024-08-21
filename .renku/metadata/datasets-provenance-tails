@@ -18,16 +18,16 @@
                     "@renku_oid": "5c5e509ff17a9eedb2cad380ba82623433604b12da5cc46a8e9b1a8d06565ba7",
                     "@renku_reference": true
                   },
+                  "/datasets/6c17d700fdd6414cb45416bc390631df",
+                  {
+                    "@renku_data_type": "renku.domain_model.dataset.Dataset",
+                    "@renku_oid": "279a9e3248d780589dc8cbfb67cb92acc88df2c9de0b2da9a20304d796c00dd1",
+                    "@renku_reference": true
+                  },
                   "/datasets/dda3cc2546ed43a1b3357d7d1544a62f",
                   {
                     "@renku_data_type": "renku.domain_model.dataset.Dataset",
                     "@renku_oid": "0f242419c222ef801a8771263411716c32d6c966702f5b6928af84d572061a28",
-                    "@renku_reference": true
-                  },
-                  "/datasets/f16384403112436fa9136ee2a3fd6317",
-                  {
-                    "@renku_data_type": "renku.domain_model.dataset.Dataset",
-                    "@renku_oid": "caae1d7adfc99f3bf1448ca84209665253da08d3d2c46e54078010ee64efee5c",
                     "@renku_reference": true
                   },
                   "/datasets/f6cad3d0268c449a803c59f2d3bd1283",
