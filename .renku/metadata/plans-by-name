@@ -24,6 +24,12 @@
                     "@renku_oid": "71221aff39489bb7896912536f4408c030eeabfbe1e4f3a3ae5bccfff2a993ac",
                     "@renku_reference": true
                   },
+                  "main",
+                  {
+                    "@renku_data_type": "renku.domain_model.workflow.composite_plan.CompositePlan",
+                    "@renku_oid": "f6805d4e9aa2796cb54181dcf3dc3e93d9eab6bd48198da2c8cff39b70a6ebc6",
+                    "@renku_reference": true
+                  },
                   "plot",
                   {
                     "@renku_data_type": "renku.domain_model.workflow.plan.Plan",
