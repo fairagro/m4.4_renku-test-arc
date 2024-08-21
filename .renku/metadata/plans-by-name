@@ -21,7 +21,7 @@
                   "python-workflows_pl-b7d32",
                   {
                     "@renku_data_type": "renku.domain_model.workflow.plan.Plan",
-                    "@renku_oid": "7aaa5e18dd708b7e887d71cbd714869f8e968251a6bb0d80309359a8bd778183",
+                    "@renku_oid": "351e5c12776924839d2061c56d49fbc09cdef5f0cd953873bc897a4fa3152ae4",
                     "@renku_reference": true
                   }
                 ]
