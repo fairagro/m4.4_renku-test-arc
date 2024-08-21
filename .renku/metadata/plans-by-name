@@ -18,6 +18,12 @@
                     "@renku_oid": "19df14a2b3b117cf9c90e528151478a4524bd20d7d74546e2c633de423b498fd",
                     "@renku_reference": true
                   },
+                  "plot",
+                  {
+                    "@renku_data_type": "renku.domain_model.workflow.plan.Plan",
+                    "@renku_oid": "a063ceaaa39c552bc3a820220b3387977c8cc9f19a7c51f86c5c0c091e205bf1",
+                    "@renku_reference": true
+                  },
                   "python-workflows_ca-a51b8",
                   {
                     "@renku_data_type": "renku.domain_model.workflow.plan.Plan",
