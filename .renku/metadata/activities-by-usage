@@ -24,10 +24,22 @@
                     "@renku_oid": "3ea459b89f604835afe6a8da254d1ec6d69a68d8520342cbbff2cc06feb4312e",
                     "@renku_reference": true
                   },
+                  "results.csv",
+                  {
+                    "@renku_data_type": "persistent.list.PersistentList",
+                    "@renku_oid": "222889c349fb4200ae09657634ec6b92ad8c8470a6df4fd8b0056739efd910ab",
+                    "@renku_reference": true
+                  },
                   "workflows/calculation/calculation.py",
                   {
                     "@renku_data_type": "persistent.list.PersistentList",
                     "@renku_oid": "438bbb08927e455fb487ba9463cdd7440c4932cbd12f49238a7d24c79eb048c9",
+                    "@renku_reference": true
+                  },
+                  "workflows/plot/plot.py",
+                  {
+                    "@renku_data_type": "persistent.list.PersistentList",
+                    "@renku_oid": "bdd07951701840879e5152dbcd5678a400cafd5c56c64dc092175dd442fb2cc3",
                     "@renku_reference": true
                   }
                 ]

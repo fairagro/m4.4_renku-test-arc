@@ -17,6 +17,12 @@
                     "@renku_data_type": "persistent.list.PersistentList",
                     "@renku_oid": "d4358217679d4375ae59956a9b764144dfdd628fca514a41b89f8e4e45b839da",
                     "@renku_reference": true
+                  },
+                  "results.svg",
+                  {
+                    "@renku_data_type": "persistent.list.PersistentList",
+                    "@renku_oid": "84aa38b98ac942adbd72ec103e938ea297de142f521742779251a5bca3ad06c6",
+                    "@renku_reference": true
                   }
                 ]
               }

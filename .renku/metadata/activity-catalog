@@ -28,11 +28,31 @@
   },
   "_relLength": {
     "@renku_data_type": "BTrees.Length.Length",
-    "@renku_data_value": 0
+    "@renku_data_value": 1
   },
   "_relTokens": {
     "@renku_data_type": "BTrees.OOBTree.OOTreeSet",
-    "@renku_data_value": null
+    "@renku_data_value": {
+      "@renku_data_type": "builtins.tuple",
+      "@renku_data_value": [
+        {
+          "@renku_data_type": "builtins.tuple",
+          "@renku_data_value": [
+            {
+              "@renku_data_type": "builtins.tuple",
+              "@renku_data_value": [
+                {
+                  "@renku_data_type": "builtins.tuple",
+                  "@renku_data_value": [
+                    "/activities/bd68d8a3c4e34306a57d166dac1260bf:/activities/c9ad0d5f7c9241099255d9fcf0fba6a5"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
   },
   "_relTools": {
     "BTree": {
