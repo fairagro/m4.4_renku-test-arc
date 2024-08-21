@@ -12,6 +12,12 @@
               {
                 "@renku_data_type": "builtins.tuple",
                 "@renku_data_value": [
+                  "arc",
+                  {
+                    "@renku_data_type": "renku.domain_model.workflow.composite_plan.CompositePlan",
+                    "@renku_oid": "b307b2fb925ed1b3279dbe939633864c2142cdb6f5564c12e512960dc5600ac3",
+                    "@renku_reference": true
+                  },
                   "calculation",
                   {
                     "@renku_data_type": "renku.domain_model.workflow.plan.Plan",
