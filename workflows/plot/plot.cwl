@@ -4,14 +4,14 @@ cwlVersion: v1.2
 class: CommandLineTool
 label: plot
 
+requirements:
+- class: InitialWorkDirRequirement
+  listing:
+  - entryname: plot.py
+    entry:
+      $include: plot.py
+
 inputs:
-- id: script
-  type: File
-  default:
-    class: File
-    location: plot.py
-  inputBinding:
-    position: 0
 - id: results
   type: File
   default:
@@ -19,7 +19,6 @@ inputs:
     location: ../../results.csv
   inputBinding:
     prefix: -r
-    position: 1
 
 outputs:
 - id: output
@@ -27,4 +26,6 @@ outputs:
   outputBinding:
     glob: results.svg
 
-baseCommand: python
+baseCommand:
+- python
+- plot.py

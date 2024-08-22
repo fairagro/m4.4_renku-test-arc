@@ -4,87 +4,104 @@ import cwl_utils.parser.cwl_v1_2 as cwl
 from cwlformat.formatter import cwl_format
 import yaml
 
-wf_folder_absolute = os.path.dirname(__file__)
+arc_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+arc_folders = {
+    "workflows": os.path.join(arc_root, "workflows"),
+    "assays": os.path.join(arc_root, "assays"),
+    "studies": os.path.join(arc_root, "studies"),
+    "runs": os.path.join(arc_root, "runs"),
+}
 
-def extract_parameter(param_raw, output=False, index = 0, toolname = "") -> Union[cwl.CommandInputParameter, cwl.CommandOutputParameter]:
-    name = next(iter(param_raw))
-    path:str = param_raw[name]['path']
-    if not output:
-        path = os.path.relpath(path, wf_folder_absolute + "/" + toolname + "/")
-        path = path.replace("workflows/" + toolname + "/", "")
-    prefix = param_raw[name].get('prefix', None)
+def is_in(path: str, foldername: str) -> bool:
+    return not os.path.relpath(path, arc_folders[foldername]).startswith("..")
 
-    if output:
-        return cwl.CommandOutputParameter(
+def locate_file(path: str) -> Union[str, None]:
+    for folder in arc_folders.values():
+        if os.path.exists(os.path.join(folder, path)):
+            return os.path.join(folder, path)
+    return None
+
+def get_name(obj: object) -> str:
+    return list(obj.keys())[0]
+
+def get_tool(renku_step: str) -> cwl.CommandLineTool:
+    label = get_name(renku_step)
+    doc = renku_step[label].get('description', '')
+    baseCommand = renku_step[label]['command'].split(" ")[0]
+    requirements = []
+    inputs = []
+    outputs = []
+    for input in renku_step[label].get('inputs', {}):
+        id = get_name(input)
+        if is_in(input[id]['path'], "workflows"):
+            base_name =  os.path.basename(input[id]['path'])
+            requirements.append(cwl.InitialWorkDirRequirement(listing=[{"entryname": base_name, "entry": {"$include": base_name}}]))
+            baseCommand += " " + base_name
+        else: 
+            inputs.append(cwl.CommandInputParameter(
+                type_='File',
+                id=id,
+                inputBinding=cwl.CommandLineBinding(
+                    prefix=input[id].get('prefix', None)
+                ),
+                default=cwl.File(
+                    location=os.path.relpath(input[id]['path'], os.path.join(arc_folders["workflows"], label))
+                )
+            ))
+    for output in renku_step[label].get('outputs', {}):
+        id = get_name(output)
+        outputs.append(cwl.CommandOutputParameter(
             type_='File',
-            id=name,
+            id=id,
             outputBinding=cwl.CommandOutputBinding(
-                glob=path
+                glob=output[id]['path']
             )
-        )
-    else:
-        return cwl.CommandInputParameter(
-            type_='File',
-            id=name,
-            inputBinding=cwl.CommandLineBinding(
-                prefix=prefix,
-                position=index
-            ),
-            default=cwl.File(
-                location=path
-            )
-        )
-
-
-def extract_step(step_raw) -> cwl.CommandLineTool:
-    name = next(iter(step_raw))
-    description = step_raw[name].get('description', '')
-    command = step_raw[name]['command']
-    inputs = step_raw[name].get('inputs', {})
-    outputs = step_raw[name].get('outputs', {})
-
-    cwl_inputs = [extract_parameter(input_raw, index = i, toolname=name) for i, input_raw in enumerate(inputs)]
-    cwl_outputs = [extract_parameter(output_raw, output=True)
-                   for output_raw in outputs]
-
-    command = command.split(" ")[0]
-    
+        ))
+        
+            
     return cwl.CommandLineTool(
         cwlVersion='v1.2',
-        label=name,
-        doc=description,
-        baseCommand=command,
-        inputs=cwl_inputs,
-        outputs=cwl_outputs
+        label=label,
+        doc=doc,
+        baseCommand=baseCommand.split(" "),
+        inputs=inputs,
+        outputs=outputs,
+        requirements=requirements
     )
-
-
-with open(wf_folder_absolute + '/main.yml', 'r') as f:
+with open(locate_file("main.yml"), 'r') as f:
     raw = yaml.safe_load(f)
-    tools = []
-for step in raw['steps']:
-    tool = extract_step(step)
-    tools.append(tool)
+tools = [get_tool(step) for step in raw['steps']]
+
+for tool in tools:
     with open("workflows/" + tool.label + "/" + tool.label + ".cwl", "w") as f:
         f.write(cwl_format(yaml.dump(tool.save())))
-        
-all_input = [input for step in tools for input in step.inputs]
-all_output = [output for step in tools for output in step.outputs] 
 
-globs = [output.outputBinding.glob for output in all_output]
-    
-unique_inputs = []    
-for input in all_input:
-    if not os.path.basename(input.default.location) in globs and input.id != "script":
-        unique_inputs.append(input)
+inputFiles = []
+outputFiles = {}
+steps =[]
+for tool in tools:
+    step_inputs= {}
+    for input in tool.inputs:
+        if os.path.basename(input.default.location) not in outputFiles.values():
+            defaultFile = input.default
+            defaultFile.location = defaultFile.location[3:]
+            inputFiles.append(cwl.WorkflowInputParameter(id=input.id, type_="File", default=defaultFile))
+            step_inputs[input.id] = input.id
+        else:
+            for key, output in outputFiles.items():
+                if os.path.basename(input.default.location) == output:
+                    step_inputs[input.id] = key
+                    break
+    steps.append(cwl.WorkflowStep(id=tool.label, run=tool.label + "/" + tool.label + ".cwl", in_ = step_inputs, out=[cwl.WorkflowStepOutput(id=output.id) for output in tool.outputs]))
+    for output in tool.outputs:
+        outputFiles[tool.label + "/" + output.id] = output.outputBinding.glob
 
-wf = cwl.Workflow(
-    cwlVersion='v1.2',
-    label='main',
-    inputs=unique_inputs,
-    outputs=all_output,
-    steps=[]
+label = raw["name"]        
+doc = raw["description"]
+outputs = []
+for key in outputFiles.keys():
+    outputs.append(cwl.WorkflowOutputParameter(id=key.replace("/", "_"), type_="File", outputSource=key))
+workflow = cwl.Workflow(cwlVersion='v1.2', label=label, doc=doc, steps=steps, inputs=inputFiles, outputs=outputs)
+with open("workflows/"+label+".cwl", "w") as f:
+    f.write(cwl_format(yaml.dump(workflow.save()))
 )
-
-with open("workflows/main.cwl", "w") as f:
-    f.write(cwl_format(yaml.dump(wf.save())))

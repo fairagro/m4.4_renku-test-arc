@@ -4,14 +4,14 @@ cwlVersion: v1.2
 class: CommandLineTool
 label: calculation
 
+requirements:
+- class: InitialWorkDirRequirement
+  listing:
+  - entryname: calculation.py
+    entry:
+      $include: calculation.py
+
 inputs:
-- id: script
-  type: File
-  default:
-    class: File
-    location: calculation.py
-  inputBinding:
-    position: 0
 - id: population
   type: File
   default:
@@ -19,7 +19,6 @@ inputs:
     location: ../../assays/population/dataset/population.csv
   inputBinding:
     prefix: -p
-    position: 1
 - id: speakers
   type: File
   default:
@@ -27,7 +26,6 @@ inputs:
     location: ../../assays/speakers/dataset/speakers_revised.csv
   inputBinding:
     prefix: -s
-    position: 2
 
 outputs:
 - id: output
@@ -35,4 +33,6 @@ outputs:
   outputBinding:
     glob: results.csv
 
-baseCommand: python
+baseCommand:
+- python
+- calculation.py

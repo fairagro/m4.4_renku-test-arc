@@ -9,27 +9,32 @@ inputs:
   type: File
   default:
     class: File
-    location: ../../assays/population/dataset/population.csv
-  inputBinding:
-    prefix: -p
-    position: 1
+    location: ../assays/population/dataset/population.csv
 - id: speakers
   type: File
   default:
     class: File
-    location: ../../assays/speakers/dataset/speakers_revised.csv
-  inputBinding:
-    prefix: -s
-    position: 2
+    location: ../assays/speakers/dataset/speakers_revised.csv
 
 outputs:
-- id: output
+- id: calculation_output
   type: File
-  outputBinding:
-    glob: results.csv
-- id: output
+  outputSource: calculation/output
+- id: plot_output
   type: File
-  outputBinding:
-    glob: results.svg
+  outputSource: plot/output
 
-steps: []
+steps:
+- id: calculation
+  in:
+    population: population
+    speakers: speakers
+  run: calculation/calculation.cwl
+  out:
+  - id: output
+- id: plot
+  in:
+    results: calculation/output
+  run: plot/plot.cwl
+  out:
+  - id: output
