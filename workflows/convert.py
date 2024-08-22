@@ -105,3 +105,4 @@ workflow = cwl.Workflow(cwlVersion='v1.2', label=label, doc=doc, steps=steps, in
 with open("workflows/"+label+".cwl", "w") as f:
     f.write(cwl_format(yaml.dump(workflow.save()))
 )
+# not beautiful but it works
