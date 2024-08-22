@@ -6,6 +6,11 @@ For the metadata annotation of the xlsx files the [ARCitect](https://github.com/
 The workflow was recorded using `renku`s command, exported to its own [workflow format](https://github.com/fairagro/m4.4_renku-test-arc/blob/master/workflows/main.yml) which was then converted to CWL files by a [simple quick-and-dirty script](https://github.com/fairagro/m4.4_renku-test-arc/blob/master/workflows/convert.py).
 
 ## Usage
+As this does not come with a Workflow using containers, yet, you need to install the python requirements.
+```bash
+pip install -r requirements.txt
+```
+
 To use the CWL Workflow, create a new run and execute `cwltool` from the `run`s folder. As the inputs have default values there is no need to specify inputs.
 
 ```bash
