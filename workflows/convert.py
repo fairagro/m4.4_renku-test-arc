@@ -1,10 +1,10 @@
 import os
 from typing import Union
 import cwl_utils.parser.cwl_v1_2 as cwl
+from cwlformat.formatter import cwl_format
 import yaml
 
 wf_folder_absolute = os.path.dirname(__file__)
-root = os.path.abspath(os.path.join(wf_folder_absolute, ".."))
 
 def extract_parameter(param_raw, output=False, index = 0, toolname = "") -> Union[cwl.CommandInputParameter, cwl.CommandOutputParameter]:
     name = next(iter(param_raw))
@@ -61,7 +61,30 @@ def extract_step(step_raw) -> cwl.CommandLineTool:
 
 with open(wf_folder_absolute + '/main.yml', 'r') as f:
     raw = yaml.safe_load(f)
+    tools = []
 for step in raw['steps']:
     tool = extract_step(step)
+    tools.append(tool)
     with open("workflows/" + tool.label + "/" + tool.label + ".cwl", "w") as f:
-        f.write(yaml.dump(tool.save()))
+        f.write(cwl_format(yaml.dump(tool.save())))
+        
+all_input = [input for step in tools for input in step.inputs]
+all_output = [output for step in tools for output in step.outputs] 
+
+globs = [output.outputBinding.glob for output in all_output]
+    
+unique_inputs = []    
+for input in all_input:
+    if not os.path.basename(input.default.location) in globs and input.id != "script":
+        unique_inputs.append(input)
+
+wf = cwl.Workflow(
+    cwlVersion='v1.2',
+    label='main',
+    inputs=unique_inputs,
+    outputs=all_output,
+    steps=[]
+)
+
+with open("workflows/main.cwl", "w") as f:
+    f.write(cwl_format(yaml.dump(wf.save())))

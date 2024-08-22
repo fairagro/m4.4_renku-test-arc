@@ -1,17 +1,10 @@
 #!/usr/bin/env cwl-runner
 
 cwlVersion: v1.2
-class: CommandLineTool
-label: calculation
+class: Workflow
+label: main
 
 inputs:
-- id: script
-  type: File
-  default:
-    class: File
-    location: calculation.py
-  inputBinding:
-    position: 0
 - id: population
   type: File
   default:
@@ -34,5 +27,9 @@ outputs:
   type: File
   outputBinding:
     glob: results.csv
+- id: output
+  type: File
+  outputBinding:
+    glob: results.svg
 
-baseCommand: python
+steps: []

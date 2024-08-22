@@ -1,25 +1,30 @@
-baseCommand: python
-class: CommandLineTool
+#!/usr/bin/env cwl-runner
+
 cwlVersion: v1.2
+class: CommandLineTool
+label: plot
+
 inputs:
-- default:
+- id: script
+  type: File
+  default:
     class: File
     location: plot.py
-  id: script
   inputBinding:
     position: 0
+- id: results
   type: File
-- default:
+  default:
     class: File
     location: ../../results.csv
-  id: results
   inputBinding:
-    position: 1
     prefix: -r
-  type: File
-label: plot
+    position: 1
+
 outputs:
 - id: output
+  type: File
   outputBinding:
     glob: results.svg
-  type: File
+
+baseCommand: python

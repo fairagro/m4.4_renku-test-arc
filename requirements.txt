@@ -2,3 +2,5 @@ pandas
 matplotlib
 SciencePlots
 pyyaml
+cwl-utils
+cwlformat
