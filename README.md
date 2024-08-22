@@ -1,38 +1,19 @@
-# renku-arc
+# Experiment: Creating an ARC using renku and ARCitect
+This repository contains a proof-of-concept ARC which was created using [`renku`](https://renkulab.io/) in combination with a [custom template](https://github.com/JensKrumsieck/renku-arc-template).
 
-## Introduction
+For the metadata annotation of the xlsx files the [ARCitect](https://github.com/nfdi4plants/ARCitect) was used. The detailed progress is documented in our [concept repo](https://github.com/fairagro/m4.4_concept/blob/main/test_existing_tools/renku_as_arc.md). The data and scripts are from our [Hello World Use Case](https://github.com/fairagro/m4.4_hello_world).
 
-This is a Renku project - basically a git repository with some
-bells and whistles. You'll find we have already created some
-useful things like `data` and `notebooks` directories and
-a `Dockerfile`.
+The workflow was recorded using `renku`s command, exported to its own [workflow format](https://github.com/fairagro/m4.4_renku-test-arc/blob/master/workflows/main.yml) which was then converted to CWL files by a [simple quick-and-dirty script](https://github.com/fairagro/m4.4_renku-test-arc/blob/master/workflows/convert.py).
 
-## Working with the project
+## Usage
+To use the CWL Workflow, create a new run and execute `cwltool` from the `run`s folder. As the inputs have default values there is no need to specify inputs.
 
-The simplest way to start your project is right from the Renku
-platform - just click on the `Sessions` tab and start a new session.
-This will start an interactive environment right in your browser.
+```bash
+cd runs
+mkdir my_run_folder
+cd my_run_folder
+cwltool ../../workflows/main.cwl
+```
 
-To work with the project anywhere outside the Renku platform,
-click the `Settings` tab where you will find the
-git repo URLs - use `git` to clone the project on whichever machine you want.
-
-### Changing interactive session dependencies
-
-Initially we install a very minimal set of packages to keep the images small.
-However, you can add python and conda packages in `requirements.txt` and
-`environment.yml` to your heart's content. If you need more fine-grained
-control over your environment, please see [the documentation](https://renku.readthedocs.io/en/stable/topic-guides/customizing-sessions.html).
-
-## Project configuration
-
-Project options can be found in `.renku/renku.ini`. In this
-project there is currently only one option, which specifies
-the default type of environment to open, in this case `/lab` for
-JupyterLab. You may also choose `/tree` to get to the "classic" Jupyter
-interface.
-
-## Moving forward
-
-Once you feel at home with your project, we recommend that you replace
-this README file with your own project documentation! Happy data wrangling!
+## Validation
+The ARC validation pipeline by DataPLANT was used to [validate the ARC structure](https://github.com/fairagro/m4.4_renku-test-arc/actions/workflows/arc-validation.yml). Artifacts are built and attached to the pipeline's runs respectively.
